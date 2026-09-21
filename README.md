@@ -6,7 +6,31 @@ JavaScript** — no build step, no dependencies to install.
 
 ## Live Demo
 
-Hosted on Vercel: https://crypto-landing-page-teal.vercel.app
+Hosted on Vercel: **https://crypto-landing-page-navy.vercel.app**
+
+## Deploy
+
+The project is already linked to Vercel (`.vercel/project.json`), so a
+production deploy is a single command:
+
+```bash
+vercel --prod
+```
+
+On Windows you can also just run the helper script:
+
+```bash
+deploy.bat
+```
+
+### Continuous deployment from GitHub
+
+To have every push to `main` deploy automatically:
+
+1. Install the Vercel GitHub App: https://github.com/apps/vercel
+   (grant it access to the `crypto-landing-page` repository).
+2. Run `vercel git connect` in this folder, or connect the repo from
+   **Project → Settings → Git** in the Vercel dashboard.
 
 ## Features
 
@@ -32,7 +56,10 @@ Hosted on Vercel: https://crypto-landing-page-teal.vercel.app
 
 ```
 .
-└── index.html   # everything: markup, styles, and scripts
+├── index.html     # everything: markup, styles, and scripts
+├── vercel.json    # static output config + security headers
+├── deploy.bat     # Windows one-liner: `vercel --prod`
+└── README.md
 ```
 
 ## Run Locally
