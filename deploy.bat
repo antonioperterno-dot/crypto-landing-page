@@ -5,7 +5,7 @@ REM (npm i -g vercel) and a linked project (.vercel/project.json).
 cd /d "%~dp0"
 
 echo === Deploying to production ===
-call vercel --prod
+call vercel --prod --yes
 echo Deploy exit code: %errorlevel%
 
 echo === Done ===

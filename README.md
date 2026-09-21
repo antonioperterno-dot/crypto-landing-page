@@ -6,7 +6,12 @@ JavaScript** — no build step, no dependencies to install.
 
 ## Live Demo
 
-Hosted on Vercel: **https://crypto-landing-page-navy.vercel.app**
+Hosted on Vercel (team `antonioperterno`, project `crypto-landing-page`):
+
+- **https://crypto-landing-page-antonioperterno.vercel.app** (canonical)
+- **https://crypto-landing-page-navy.vercel.app** (alias, same deployment)
+
+Deployment protection is disabled, so the page is publicly reachable.
 
 ## Deploy
 
@@ -14,7 +19,7 @@ The project is already linked to Vercel (`.vercel/project.json`), so a
 production deploy is a single command:
 
 ```bash
-vercel --prod
+vercel --prod --yes
 ```
 
 On Windows you can also just run the helper script:
@@ -22,6 +27,10 @@ On Windows you can also just run the helper script:
 ```bash
 deploy.bat
 ```
+
+Note: `.vercel/output/` is **not** committed or kept around. This is a plain
+static site with no build step, so every deploy uploads `index.html` straight
+from the working tree — editing the file and re-running the command is enough.
 
 ### Continuous deployment from GitHub
 
