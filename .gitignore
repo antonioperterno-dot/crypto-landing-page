@@ -1,0 +1,17 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Node (not required for this project, but keeps a stray install out of git)
+node_modules/
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# Local scratch files
+.preview-*.png
+.qa*.mjs
