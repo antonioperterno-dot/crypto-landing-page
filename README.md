@@ -25,12 +25,30 @@ deploy.bat
 
 ### Continuous deployment from GitHub
 
-To have every push to `main` deploy automatically:
+Two options — pick one.
 
-1. Install the Vercel GitHub App: https://github.com/apps/vercel
-   (grant it access to the `crypto-landing-page` repository).
+**Option A — Vercel GitHub App (recommended)**
+
+Gives you preview deployments for pull requests and deploy status comments.
+
+1. Install the app: https://github.com/apps/vercel — grant it access to the
+   `crypto-landing-page` repository.
 2. Run `vercel git connect` in this folder, or connect the repo from
    **Project → Settings → Git** in the Vercel dashboard.
+
+**Option B — GitHub Actions**
+
+The workflow at `.github/workflows/deploy.yml` runs on every push to `main`.
+It stays dormant until you give it a token:
+
+1. Create a token at https://vercel.com/account/tokens
+   (scope it to the `antonioperterno` team).
+2. Add it to the repo: **Settings → Secrets and variables → Actions →
+   New repository secret**, named `VERCEL_TOKEN`.
+   Or from the CLI: `gh secret set VERCEL_TOKEN`
+
+The next push to `main` then deploys automatically. Until the secret exists,
+the workflow skips with a notice instead of failing.
 
 ## Features
 
@@ -56,9 +74,12 @@ To have every push to `main` deploy automatically:
 
 ```
 .
-├── index.html     # everything: markup, styles, and scripts
-├── vercel.json    # static output config + security headers
-├── deploy.bat     # Windows one-liner: `vercel --prod`
+├── .github/
+│   └── workflows/
+│       └── deploy.yml   # GitHub Actions → Vercel (needs VERCEL_TOKEN secret)
+├── index.html           # everything: markup, styles, and scripts
+├── vercel.json          # static output config + security headers
+├── deploy.bat           # Windows one-liner: `vercel --prod`
 └── README.md
 ```
 
